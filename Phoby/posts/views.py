@@ -10,11 +10,11 @@ def posts(request):
 
 
 
-        posts= createPosts.objects.create_user(post_image=post_image, post_caption=post_caption)
+        posts = createPosts(post_image=post_image, post_caption=post_caption)
         posts.save() 
         print('Upload Complete')
      
 
         return redirect('/')
     else:
-        return render(request, template_name="main/upload.html", context={"Posts":posts.objects.all})
+        return render(request, template_name="main/upload.html", context={"Posts":createPosts.objects.all})
