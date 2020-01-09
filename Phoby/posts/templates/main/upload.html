@@ -8,6 +8,7 @@
 </head>
 <body>
     <form method="POST" enctype="multipart/form-data">
+        {% csrf %}
         <input type="file" name="image" value="Upload Image">
         <input type="text" name="caption" placeholder="Enter Caption">
         <input type="submit" value="Upload">

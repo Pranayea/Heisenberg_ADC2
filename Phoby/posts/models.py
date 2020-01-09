@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime
 # Create your models here.
 
-class posts(models.Model):
+class createPosts(models.Model):
     post_id = models.AutoField(primary_key = True)
     post_image = models.ImageField(upload_to='posts_images/',blank= True)
     post_caption = models.TextField(max_length=140)
