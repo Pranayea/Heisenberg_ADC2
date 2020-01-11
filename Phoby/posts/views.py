@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import createPosts
+from PIL import Image
 # Create your views here.
 
 def posts(request):
@@ -9,9 +10,13 @@ def posts(request):
         post_caption = request.POST['caption']
         posts = createPosts(post_image=post_image, post_caption=post_caption)
         posts.save() 
-        print('Upload Complete')
-     
 
         return redirect('/')
     else:
-        return render(request, template_name="main/upload.html", context={"Posts":createPosts.objects.all})
+        return render(request, template_name="main/upload.html")
+
+def posts_view(request):
+    return render(request, template_name="main/posts_list.html", context={"Posts":createPosts.objects.all})
+
+def delete_posts(request):
+    pass 
