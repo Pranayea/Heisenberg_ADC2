@@ -6,12 +6,13 @@ from PIL import Image
 
 def posts(request):
     if request.method == 'POST':
-        post_image = request.FILES['image']
+        # post_image = request.FILES['image']
         post_caption = request.POST['caption']
-        posts = createPosts(post_image=post_image, post_caption=post_caption)
+        # posts = createPosts(post_image=post_image, post_caption=post_caption)
+        posts = createPosts(post_caption=post_caption)
         posts.save() 
 
-        return redirect('/')
+        return redirect('/view')
     else:
         return render(request, template_name="main/upload.html")
 
