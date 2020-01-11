@@ -8,8 +8,10 @@
     <!-- <p>{{p.post_image}}</p>      -->
     <p>Posts: {{p.uploaded_on}}</p> 
     <a href="">Edit</a>
-    <a href="">Delete</a>
-    </div> 
+    <form action="{% url 'posts_delete' p.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
     {% endfor %}
 </div>
 {% endblock content %}

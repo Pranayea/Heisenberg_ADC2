@@ -19,5 +19,18 @@ def posts(request):
 def posts_view(request):
     return render(request, template_name="main/posts_list.html", context={"Posts":createPosts.objects.all})
 
-def delete_posts(request):
-    pass 
+# def posts_edit(request,pk):
+#     if request.method == 'GET':
+#         posts=createPosts.objects.get(pk=id)
+#         posts_caption = request.POST['caption']
+#         posts = createPosts(post_caption=post_caption)
+#         posts.save()
+#         return redirect('/view')
+#     else:
+#         return render(request, template_name="main/upload.html")
+
+
+def posts_delete(request,pk):
+    posts=createPosts.objects.get(pk=pk)
+    posts.delete()
+    return redirect('/view')
