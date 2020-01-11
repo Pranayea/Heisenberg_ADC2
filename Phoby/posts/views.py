@@ -19,15 +19,11 @@ def posts(request):
 def posts_view(request):
     return render(request, template_name="main/posts_list.html", context={"Posts":createPosts.objects.all})
 
-# def posts_edit(request,pk):
-#     if request.method == 'GET':
-#         posts=createPosts.objects.get(pk=id)
-#         posts_caption = request.POST['caption']
-#         posts = createPosts(post_caption=post_caption)
-#         posts.save()
-#         return redirect('/view')
-#     else:
-#         return render(request, template_name="main/upload.html")
+def posts_edit(request,pk=0):
+    # if request.method == 'POST':
+        posts_edit=createPosts.objects.get(pk=pk)
+        # posts = createPosts(instance=posts_edit)
+        return render(request, template_name="main/upload.html", context={"posts":posts})
 
 
 def posts_delete(request,pk):
