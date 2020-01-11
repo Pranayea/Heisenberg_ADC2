@@ -19,7 +19,7 @@ def login(request):
         if post is not None:
             username = request.POST['username']
             request.session['username'] = username
-            return redirect("test")
+            return redirect("posts/posts")
         else:
             return render(request,'users/login.html')
     return render(request, template_name="users/login.html")

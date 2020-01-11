@@ -12,7 +12,7 @@ def posts(request):
         posts = createPosts(post_caption=post_caption)
         posts.save() 
 
-        return redirect('/view')
+        return redirect('/posts/view')
     else:
         return render(request, template_name="main/upload.html")
 
@@ -29,4 +29,4 @@ def posts_edit(request,pk=0):
 def posts_delete(request,pk):
     posts=createPosts.objects.get(pk=pk)
     posts.delete()
-    return redirect('/view')
+    return redirect('/posts/view')
