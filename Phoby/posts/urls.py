@@ -1,9 +1,10 @@
+from django.contrib import admin
 from django.urls import path
 from . import views
 
+app_name = "posts"
+
 urlpatterns = [
-    path('posts/',views.posts,name='posts'),
+    path('upload/', views.posts, name='uploads'),
     path('view/',views.posts_view,name='view'),
-    path('<int:pk>/',views.posts_edit,name='posts_update'),
-    path('delete/<int:pk>/',views.posts_delete,name='posts_delete'),
-    ]
+]
