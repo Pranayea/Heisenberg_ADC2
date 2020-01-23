@@ -1,0 +1,21 @@
+<html>
+    <head>
+         <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    </head>
+    Profile pic: <img src="{{userProfile.profilePic.url}}" alt="profile_pic" class="circle responsive-img"> <br>
+    Username: {{user.username}} <br>
+    Bio : {{userProfile.bio}}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <button class="btn btn-primary btn=sm" type="submit">Submit</button>
+    </form>
+
+
+</html>
