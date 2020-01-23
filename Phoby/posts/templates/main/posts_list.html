@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block content %}
@@ -10,6 +11,21 @@
     <form method="POST" action="{% url 'posts:delete' post.pk %}">
         {% csrf_token %}
         <button class="btn btn-primary btn-sm">Delete</button>
+=======
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Hello From Posts_list</h1>
+{% for p in Posts %}
+    <div>
+    <p>Caption: {{p.post_caption}}</p>
+    <!-- <p>{{p.post_image}}</p>      -->
+    <p>Posts: {{p.uploaded_on}}</p> 
+    <a href="{% url 'posts_update' p.pk %}">Edit</a>
+    <form action="{% url 'posts_delete' p.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+>>>>>>> parent of be3fd2b... 1stpost delete
     </form>
     {% endfor %}
 </div>
