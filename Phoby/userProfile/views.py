@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect , get_object_or_404
 from .models import userProfile
 from .form import OurForm
-from django.http import HttpResponse, JsonResponse
-import json 
-from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+
 # Create your views here.
 def profile(request):
     form = OurForm()
