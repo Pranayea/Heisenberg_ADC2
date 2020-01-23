@@ -1,0 +1,26 @@
+
+{% extends 'main/header.html' %}
+{% block content %}
+
+
+
+<h1>Login</h1>
+<form  method="POST">
+
+  {% csrf_token %} 
+  {{form.as_p}}
+<button type="submit" value="sign_in" style="background-color: red; color: white; padding: 18px 32px; border: none;">Submit</button>
+
+</form>
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+
+
+{% endblock %} 
+
