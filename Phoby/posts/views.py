@@ -1,18 +1,37 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import createPosts
-from PIL import Image
+from .forms import OurForm
 # Create your views here.
 
 def posts(request):
-    if request.method == 'POST':
-        post_image = request.FILES.get('image')
-        post_caption = request.POST.get('caption')
-        posts = createPosts(post_image=post_image, post_caption=post_caption)
-        posts.save() 
-        return redirect('posts:posts_view')
-    else:
-        return render(request, template_name="main/upload.html")
+    form = OurForm()
+    if request.method == "POST":
+        form = OurForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('posts:view')
+        else:
+            form = OurForm()
+    return render(request, "main/upload.html", {"form": form})
 
 def posts_view(request):
     return render(request, template_name="main/posts_list.html", context={"Posts":createPosts.objects.all})
+
+def update_posts(request, pk=None):
+    posts = get_object_or_404(createPosts,id=pk)
+    form = OurForm()
+    if request.method == "POST":
+        form = OurForm(request.POST, request.FILES,posts)
+        if form.is_valid():
+            form.save()
+            return redirect('posts:view')
+    else:
+        return render(request,"main/upload.html",{"posts":posts})
+
+
+
+def delete_posts(request, pk):
+    posts = createPosts.objects.get(pk=pk)
+    posts.delete()
+    return redirect('posts:view')
