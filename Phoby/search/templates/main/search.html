@@ -1,4 +1,90 @@
-<html>
+
+{% block content %}
+
+<!-- search ma get use huncha/ 
+    name: input field check garcha tei input field ho koi haina vanera
+    txt field ma lekheko value ma save vayera query le pass garcha
+-->
+<form class="search-bar" method="get">
+    <input type="text" name='q' placeholder="Search..." id="id_q">
+</form>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+
+
+        </tr>
+
+    </thead>
+    <!-- view ko userss -->
+    {% if users %}
+    <tbody>
+        {% for users in users %}
+
+        <tr>
+            <td>{{users.username}} </td>
+            <td>{{users.email}} </td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="card-body">
+                    <h1 class="card-title">No Results!!</h1>
+
+                </div>
+
+            </div>
+        </div>
+
+        {% endif %}
+
+    </tbody>
+
+</table>
+
+
+<script type="text/javascript">
+
+    document.getElementById('id_q').value = '{{query}}'
+
+</script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
   <head>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link
@@ -114,4 +200,4 @@
       </div>
     </div>
   </body>
-</html>
+</html> -->
