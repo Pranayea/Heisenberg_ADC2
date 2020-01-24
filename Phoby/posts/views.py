@@ -18,16 +18,16 @@ def posts(request):
 def posts_view(request):
     return render(request, template_name="main/posts_list.html", context={"Posts":createPosts.objects.all})
 
-def update_posts(request, pk=None):
-    posts = get_object_or_404(createPosts,id=pk)
+def update_posts(request, id=None):
+    posts = get_object_or_404(createPosts,id=id)
     form = OurForm()
     if request.method == "POST":
-        form = OurForm(request.POST, request.FILES,posts)
+        form = OurForm(request.POST, request.FILES,instance=posts)
         if form.is_valid():
             form.save()
             return redirect('posts:view')
     else:
-        return render(request,"main/upload.html",{"posts":posts})
+        return render(request,"main/upload.html",{"form":form})
 
 
 
