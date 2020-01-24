@@ -23,11 +23,11 @@
     <!-- view ko userss -->
     {% if users %}
     <tbody>
-        {% for u in users %}
+        {% for user in users %}
 
         <tr>
-            <td>{{u.username}} </td>
-            <td>{{u.email}} </td>
+            <td>{{user.username}} </td>
+            <td>{{user.email}} </td>
         </tr>
         {% endfor %}
 
