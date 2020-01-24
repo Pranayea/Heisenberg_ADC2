@@ -6,11 +6,14 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from . models import Hobby
 from .forms import PhobyForm
+from django.contrib.sessions.models import Session
 # Create your views here.
 
 
 def homepage(request):
+    # if request.session['username'] == username:
     return render(request, template_name="main/home.html",context={"hobbys":Hobby.objects.all})
+    # return redirect['login']
 
 def register(request):
     form = PhobyForm()
@@ -29,13 +32,14 @@ def loginpage(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
+            # session['username'] = 0
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
-
+                # request.session['username'] = 'username'
                 login(request, user)
-                messages.info(request, "You are now logged in as {username}")
+                messages.info(request, "You are now logged in as {{username}}")
                 return redirect('/')
             else:
                 messages.error(request, "Invalid username or password.")
