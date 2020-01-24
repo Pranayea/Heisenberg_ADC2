@@ -4,5 +4,5 @@ from .models import userProfile
 class OurForm(forms.ModelForm):
 # Meta Class Is used to override a class
     class Meta:
-        model = userProfile
+        model = userProfile #adding custom fields
         fields = ('bio', 'profilePic')

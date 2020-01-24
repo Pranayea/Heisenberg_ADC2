@@ -8,13 +8,13 @@
         <li><a href="/">Home</a></li>
         {% if user.is_authenticated %}
 
-        <li><a href="/account">{{user.username}} </a></li>
-        <li><a href="/logout">Log out</a></li>
+        <li><a href="/accounts/account/">{{user.username}} </a></li>
+        <li><a href="/accounts/logout/">Log out</a></li>
 
         {% else %}
 
-        <li><a href="/account">Register</a></li>
-        <li><a href="/login">Log in</a></li>
+        <li><a href="/accounts/account/">Register</a></li>
+        <li><a href="/accounts/login">Log in</a></li>
         {% endif %}
       </ul>
     </div>

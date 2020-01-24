@@ -36,7 +36,7 @@ def loginpage(request):
 
                 login(request, user)
                
-                return redirect('/')
+                return redirect('accounts:homepage')
             else:
                 messages.error(request, "Invalid username or password.")
         else:

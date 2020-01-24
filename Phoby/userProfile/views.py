@@ -5,6 +5,7 @@ from .form import OurForm
 from django.http import HttpResponse
 
 # Create your views here.
+# add bio and profile pic
 def bio(request):
     form = OurForm()
     if request.method == "POST":
@@ -16,10 +17,11 @@ def bio(request):
             form = OurForm()
     return render(request, "userProfile/bio.html", {"form": form})
 
+# gives profile
 def profile_list(request):
     return render(request,"userProfile/profile.html",context={"Profile":userProfile.objects.all})
 
-
+# update profile pic, bio etc
 def update_profile(request,id=None):
     profile = get_object_or_404(userProfile,id=id)
     form = OurForm()
