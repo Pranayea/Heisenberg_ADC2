@@ -19,5 +19,5 @@ from . import views
 
 urlpatterns = [
     # path('',views.user_list,name='user_list'),
-    path("search/", views.userop, name="userlist"),
+    path("", views.userop, name="search"),
 ]

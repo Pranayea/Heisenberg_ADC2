@@ -12,11 +12,11 @@ def userop(request):
     if request.GET:
         query = request.GET['q']
         user = get_data_queryset(str(query))
-    return render(request, "main/search.html", {"users" : user})
+    return render(request, "main/search.html", {"users":user})
 
 
    
-def get_data_queryset(query=None):
+def get_data_queryset(query):
     queryset = []
     
     queries = query.split(" ") 
