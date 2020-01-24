@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
     'search',
+    'userProfile',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,4 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/posts/posts_images/'
+MEDIA_URL = '/profile/profilePic/'

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        {% for profile in Profile %}
+        Profile pic: <img src="{{profile.profilePic.url}}" alt="profile_pic" class="circle responsive-img"> <br>
+        <!-- Username: {{user.user}} <br> -->
+        Bio : {{profile.bio}}
+        <a href="{% url 'userProfile:update' profile.pk %}">Edit</a>
+        {% endfor %}
+    </div>
+    <br>
+
+{% endblock content %}
