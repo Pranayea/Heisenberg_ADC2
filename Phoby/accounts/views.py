@@ -30,7 +30,7 @@ def loginpage(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username') #cleaned data turns username to caseinsensitive
-            password = form.cleaned_data.get('password')
+            password = form.cleaned_data.get('password') #cleaned data turns username to caseinsensitive
             user = authenticate(username=username, password=password) #authenicating user if username and password exists or not
             if user is not None:
 
