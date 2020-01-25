@@ -3,11 +3,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import PasswordInput
 from django.contrib.auth.models import User
 
-
+#Created PhobyForm for registration using UserCreationForm
 class PhobyForm(UserCreationForm):
     email = forms.EmailField(required=True)
    
-
+#Meta class to overrride
     class Meta:
         model = User
         fields = (
