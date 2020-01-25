@@ -9,6 +9,6 @@ class UserTest(TestCase):
       User.objects.create(username="Pranaya", email="prms@gmail.com")
     
     def test_ORM(self):
-        post = User.objects.get(username="Pranaya", email="prms@gmail.com")
-        self.assertEqual(post.username, "Pranaya")
-        self.assertEqual(post.email, "prms@gmail.com")
+        users = User.objects.get(username="Pranaya", email="prms@gmail.com")
+        self.assertEqual(users.username, "Pranaya")
+        self.assertEqual(users.email, "prms@gmail.com")
