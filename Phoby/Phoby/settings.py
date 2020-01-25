@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Phoby.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],# checks for templates from root directory and if not uavailable new file 'templates' is created
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,6 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/posts/posts_images/'
-MEDIA_URL = '/profile/profilePic/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # checks for media from root directory and if not uavailable new file 'media' is created
+MEDIA_URL = '/posts/posts_images/' #for posts
+MEDIA_URL = '/profile/profilePic/' #for profile pics
