@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
+# Hobby table conatining hobby name and number of followers and posts
 class Hobby(models.Model):
     hobby_id=models.AutoField(primary_key=True)
     hobby_name = models.CharField(max_length = 15)
