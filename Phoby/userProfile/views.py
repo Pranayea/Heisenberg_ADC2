@@ -4,7 +4,8 @@ from .models import userProfile
 from .form import OurForm
 from django.http import HttpResponse
 
-# Create your views here.
+
+
 # add bio and profile pic
 def bio(request):
     form = OurForm()
