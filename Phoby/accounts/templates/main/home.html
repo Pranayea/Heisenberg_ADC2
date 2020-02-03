@@ -1,9 +1,8 @@
-
-
 {% extends 'main/header.html' %}
 {% block content %}
+{% load static from static %}
 
- <div class="row">
+<!-- <div class="row">
      {% for h in hobbys %}
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
@@ -19,15 +18,138 @@
       </div>
     </div>
      {% endfor %}
+  </div> -->
+
+<head>
+  <title>Homepage</title>
+  <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- For icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <div class="row">
+    <div class="col s1"></div>
+    <div class="col s6">
+      <div class="col s4 main-user">
+        <div>
+          <img id="user-pic" class="circle responsive-img" src="../images/ (1).jpg" />
+        </div>
+      </div>
+      <div class="col s8">
+        <div class="input">
+          <input type="text">
+        </div>
+        <div>
+          <h4 style="margin-top:13%;margin-bottom:13%;text-align:center;color:white;">Hobby Name</h4>
+        </div>
+      </div>
+      <div class="col s4 posted-user">
+        <div>
+          <img class="circle responsive-img" src="../images/ (4).jpg" />
+        </div>
+      </div>
+
+      <div class="col s8 posted">
+        <p class="username" style="font-family: Taprom;">Username <span class="right" id="date">1/25/2020</span></p>
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light card2">
+            <img class="activator" src="../images/ (5).jpg" />
+          </div>
+          <div class="card-conten title">
+            <span class="card-title activator">Card Title</span>
+            <p class="right"><a href="#">Download</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title">Card Title</span>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quos error harum illum cum mollitia autem
+              molestiae minus dignissimos consequuntur, laboriosam magni eius quas hic tenetur vero quod iure ullam!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s1"></div>
+    <div class="col s3" id="right-side-stuff">
+      <div>
+        <p style="padding-left: 2%;">Recommened hobbies</p>
+        <p class="hobbies">hobby1</p>
+        <p class="hobbies">hobby2</p>
+        <p class="hobbies">hobby3</p>
+      </div>
+      <br />
+      <div id="right-side-container">
+        <p style="margin-top: 3%; padding-left:3%; margin-bottom:3%;">Trending</p>
+        <div class="col s2" id="right-side-user">
+          <img class="circle responsive-img" src="../images/ (7).jpg" />
+        </div>
+        <div class="col s4" id="trending-name">
+          <div>
+            <p>user_name</p>
+          </div>
+        </div>
+        <div class="col image-barrier">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/ (1).png" />
+            </div>
+            <div class="card-content">
+              <p>
+                I am a very simple card. I am good at containing small
+                bits of information. I am convenient because I require
+                little markup to use effectively.
+              </p>
+            </div>
+            <div class="card-action">
+              <p>This is a link</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s1"></div>
   </div>
 
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li>
+        <a class="btn-floating red"><i class="material-icons">insert_chart</i></a>
+      </li>
+      <li>
+        <a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a>
+      </li>
+      <li>
+        <a class="btn-floating green"><i class="material-icons">publish</i></a>
+      </li>
+      <li>
+        <a class="btn-floating blue"><i class="material-icons">attach_file</i></a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var dropdowns = document.querySelectorAll('.dropdown-trigger')
+    for (var i = 0; i < dropdowns.length; i++) {
+      M.Dropdown.init(dropdowns[i]);
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".fixed-action-btn");
+      var instances = M.FloatingActionButton.init(elems, {
+        direction: "top"
+      });
+    });
+  </script>
+</body>
 {% endblock %}
-
-
-
-
-
-
-
-
-

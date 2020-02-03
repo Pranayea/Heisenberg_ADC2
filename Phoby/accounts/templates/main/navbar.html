@@ -1,7 +1,4 @@
-
-
-
-  <nav>
+<!-- <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Phoby</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -18,13 +15,22 @@
         {% endif %}
       </ul>
     </div>
-  </nav>
-  
-
-
-
-
-
-
-
-
+  </nav> -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">Profile</a></li>
+  <li><a href="#!">Saved</a></li>
+  <li class="divider"></li>
+  <li><a href="/accounts/logout/">Logout</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo" style="padding-left:23px ;">Phoby</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="dropdown1">{{user.username}}<img src="../images/ (1).jpg"
+            alt="" id="user-pic-nav" class="circle responsive-img"><i
+            class="material-icons right">arrow_drop_down</i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
