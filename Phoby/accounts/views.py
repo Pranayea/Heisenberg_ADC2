@@ -11,7 +11,7 @@ from .forms import PhobyForm
 from .decorators import unauthenticated_user
 # , admin_only
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 # this method shows all the hobby present
 
 
@@ -24,47 +24,87 @@ def homepage(request):
 
 @unauthenticated_user
 def register(request):
+    # form = PhobyForm()
+    # if request.method == "POST":  # checks whether the request method is post
+    #     form = PhobyForm(request.POST)
+    #     if form.is_valid():
+    #         user = form.save()
+    #     return redirect('accounts:login')
+
+    # return render(request, template_name="main/register.html", context={"form": form})
     form = PhobyForm()
-    if request.method == "POST":  # checks whether the request method is post
+    if request.method == 'POST':
         form = PhobyForm(request.POST)
         if form.is_valid():
             user = form.save()
-        return redirect('accounts:login')
+            username = form.cleaned_data.get('username')
 
-    return render(request, template_name="main/register.html", context={"form": form})
+            # group = Group.objects.get(name='customer')
+            # user.groups.add(group)
+
+            # Customer.objects.create(
+            #     user=user,
+            #     name=user.username,
+            # )
+
+            messages.success(request, 'Account was created for ' + username)
+
+            return redirect('login')
+
+    context = {'form': form}
+    return render(request, 'main/register.html', context)
 
 # this method authenticates user to login
 
+# Yo ni chalcha
+# @unauthenticated_user
+# def loginpage(request):
+#     if request.method == 'POST':  # checks whether the request method is post
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             # cleaned data turns username to caseinsensitive
+#             username = form.cleaned_data.get('username')
+#             # cleaned data turns username to caseinsensitive
+#             password = form.cleaned_data.get('password')
+#             # authenicating user if username and password exists or not
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
+
+#                 login(request, user)
+
+#                 return redirect('accounts:homepage')
+#             else:
+#                 # shows message if user doesnot exists
+#                 messages.error(request, "Invalid username or password.")
+#         else:
+#             # shows message if form is not valid
+#             messages.error(request, "Invalid username or password.")
+#     form = AuthenticationForm()
+#     return render(request,
+#                   template_name="main/login.html",  # returns to login.html
+#                   context={"form": form})
 
 @unauthenticated_user
 def loginpage(request):
-    if request.method == 'POST':  # checks whether the request method is post
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            # cleaned data turns username to caseinsensitive
-            username = form.cleaned_data.get('username')
-            # cleaned data turns username to caseinsensitive
-            password = form.cleaned_data.get('password')
-            # authenicating user if username and password exists or not
-            user = authenticate(username=username, password=password)
-            if user is not None:
 
-                login(request, user)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-                return redirect('accounts:homepage')
-            else:
-                # shows message if user doesnot exists
-                messages.error(request, "Invalid username or password.")
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('accounts:homepage')
         else:
-            # shows message if form is not valid
-            messages.error(request, "Invalid username or password.")
-    form = AuthenticationForm()
-    return render(request,
-                  template_name="main/login.html",  # returns to login.html
-                  context={"form": form})
+            messages.info(request, 'Username OR password is incorrect')
 
+    context = {}
+    return render(request, 'main/login.html', context)
 
 # this method logouts the user
+
+
 def logout_page(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
