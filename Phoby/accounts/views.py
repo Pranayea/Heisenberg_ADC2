@@ -12,13 +12,27 @@ from .decorators import unauthenticated_user
 # , admin_only
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
+from posts.models import createPosts
 # this method shows all the hobby present
 
 
 @login_required(login_url='accounts:login')
 # @admin_only
 def homepage(request):
-    return render(request, template_name="main/homepage.html", context={"hobbys": Hobby.objects.all})
+    users = User.objects.all()
+    posts = createPosts.objects.all()
+    # caption = post_caption.objects.all()
+    # uploaded_on = uploaded_on.objects.all()
+    # total_customers = customers.count()
+
+    # total_orders = orders.count()
+    # delivered = orders.filter(status='Delivered').count()
+    # pending = orders.filter(status='Pending').count()
+
+    context = {'users': users, 'posts': posts}
+
+    return render(request, 'main/homepage.html', context)
 # this method registers user
 
 

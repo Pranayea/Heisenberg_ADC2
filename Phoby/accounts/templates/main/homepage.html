@@ -56,11 +56,13 @@
         </div>
       </div>
 
+      {% for post in posts %}
       <div class="col s8 posted">
-        <p class="username" style="font-family: Taprom;">Username <span class="right" id="date">1/25/2020</span></p>
+        <p class="username" style="font-family: Taprom;">Username <span class="right"
+            id="date">{{post.uploaded_on}}</span></p>
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light card2">
-            <img class="activator" src="../images/ (5).jpg" />
+            <img class="activator" src="{{post.post_image.url}}" />
           </div>
           <div class="card-conten title">
             <span class="card-title activator">Card Title</span>
@@ -69,12 +71,12 @@
           <div class="card-reveal">
             <span class="card-title">Card Title</span>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quos error harum illum cum mollitia autem
-              molestiae minus dignissimos consequuntur, laboriosam magni eius quas hic tenetur vero quod iure ullam!
+              {{post.post_caption}}
             </p>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
     <div class="col s1"></div>
     <div class="col s3" id="right-side-stuff">

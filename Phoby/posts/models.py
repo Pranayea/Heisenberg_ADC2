@@ -1,13 +1,15 @@
 from django.db import models
 from datetime import datetime, date
-from django.contrib.auth.models import User # for linking
+from django.contrib.auth.models import User  # for linking
 # Create your models here.
 
+
 class createPosts(models.Model):
-    post_image = models.ImageField(upload_to='posts/posts_images/',blank=False)
+    post_image = models.ImageField(
+        upload_to='posts/posts_images/', blank=False)
     post_caption = models.TextField(max_length=140)
-    uploaded_on = models.DateTimeField(auto_now_add=True) #adds value automatically
+    uploaded_on = models.DateTimeField(
+        auto_now_add=True)  # adds value automatically
 
     def __str__(self):
         return self.post_caption
-        
