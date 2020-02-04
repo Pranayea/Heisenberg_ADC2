@@ -49,7 +49,7 @@ def register(request):
 
             messages.success(request, 'Account was created for ' + username)
 
-            return redirect('login')
+            return redirect('accounts:login')
 
     context = {'form': form}
     return render(request, 'main/register.html', context)
@@ -83,6 +83,7 @@ def register(request):
 #     return render(request,
 #                   template_name="main/login.html",  # returns to login.html
 #                   context={"form": form})
+
 
 @unauthenticated_user
 def loginpage(request):
