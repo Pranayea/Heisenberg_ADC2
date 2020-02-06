@@ -132,3 +132,4 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/posts/posts_images/'  # for posts
 MEDIA_URL = '/profile/profilePic/'  # for profile pics
+MEDIA_URL = '/images/'
