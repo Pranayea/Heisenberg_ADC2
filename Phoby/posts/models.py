@@ -11,7 +11,7 @@ class createPosts(models.Model):
     uploaded_on = models.DateTimeField(
         auto_now_add=True)  # adds value automatically
     uploaded_by = models.ForeignKey(
-        User, null=True, on_delete=models.CASCADE)
+        User, default=1, on_delete=models.CASCADE, unique=False)
 
     def __str__(self):
         return self.post_caption
