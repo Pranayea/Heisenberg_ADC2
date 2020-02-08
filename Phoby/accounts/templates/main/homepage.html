@@ -47,7 +47,7 @@
           <input type="text">
         </div>
         <div>
-          <h4 style="margin-top:13%;margin-bottom:13%;text-align:center;color:white;">Hobby Name</h4>
+          <h4 style="margin-top:13%;margin-bottom:13%;text-align:center;color:white;" id="hob_name">Hobby Name</h4>
         </div>
       </div>
       {% for post in posts %}
@@ -67,7 +67,7 @@
           </div>
           <div class="card-conten title">
             <span class="card-title activator">Card Title</span>
-            <p class="right"><a href="#">Download</a></p>
+            <p class="right"><a href="{{post.post_image.url}}" download>Download</a></p>
           </div>
           <div class="card-reveal">
             <span class="card-title" id="title_card">Card Title</span>

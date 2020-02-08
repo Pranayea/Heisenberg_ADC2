@@ -50,13 +50,13 @@ span {
     margin-bottom: 3%;
     padding: 2%;
     padding-left: 3%;
-    border-radius: 3px;
+    /* border-radius: 30px; */
 }
 
 #right-side-container {
     /* background: #1F2833; */
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     padding: 1%;
     height: 100%;
     width: 100%;
@@ -64,7 +64,7 @@ span {
 
 #right-side-container p {
     background-color: inherit;
-    border-radius: 3px;
+    /* border-radius: 30px; */
 }
 
 #right-side-user {
@@ -94,18 +94,18 @@ span {
 
 .image-barrier {
     /* background: #1F2833; */
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     margin-top: 15px;
     /* filter: blur(4px); */
 }
 
 .card-image {
-    border-radius: 3px 3px 0 0;
+    border-radius: 20px 20px 0 0;
 }
 
 .card .card-image img {
-    border-radius: 3px 3px 0 0;
+    border-radius: 15px 15px 0 0;
     overflow: hidden;
 }
 
@@ -152,7 +152,7 @@ span {
 .input {
     margin-top: 10%;
     height: 10%;
-    border-radius: 3px;
+    border-radius: 15px;
     background-color: #1A252f;
 }
 
@@ -165,27 +165,27 @@ span {
 }
 
 .posted .card {
-    border-radius: 3px 3px 5px 5px;
+    border-radius: 20px 20px 30px 30px;
 }
 
 .posted .card div img {
-    border-radius: 3px 3px 0 0;
+    border-radius: 20px 20px 0 0;
 }
 
 .posted .card .card2 {
-    border-radius: 3px 3px 0 0;
+    border-radius: 20px 20px 0 0;
 }
 
 .title {
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 20px 20px;
 }
 
 .title p {
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 20px 20px;
 }
 
 .activator {
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 20px 20px;
 }
 
 .card-reveal {
@@ -200,7 +200,7 @@ span {
 
 .card-title {
     background-color: white;
-    border-radius: 3px;
+    border-radius: 20px;
     padding-left: 4%;
 }
 
@@ -217,9 +217,8 @@ span {
 .posted .username {
     /* background-color: #1A252f; */
     padding: 2%;
-    border-radius: 3px;
+    border-radius: 20px;
     margin-top: 20px;
-    margin-bottom: 40px;
 }
 
 #date {
@@ -235,3 +234,9 @@ span {
 .title span {
     color: #45A29E;
 }
+
+/* #hob_name::after {
+    content: " ";
+    background-color: #45A29E;
+    height: 4px;
+} */
