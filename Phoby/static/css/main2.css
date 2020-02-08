@@ -1,0 +1,237 @@
+* {
+    padding: 0;
+    margin: 0;
+    background-color: #001022;
+    color: whitesmoke;
+}
+
+.nav-wrapper {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+
+    background: #001022;
+    /* border: 2px solid #2a2e35;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+}
+
+.username {
+    background-color: #1F2833;
+}
+
+#uname {
+    bottom: 20px;
+    padding-left: 20px;
+    color: whitesmoke;
+}
+
+span {
+    background: #1A252f;
+}
+
+.out-box {
+    background: #1A252f;
+}
+
+#right-side-stuff {
+    padding-top: 2%;
+    color: #ffffff;
+}
+
+#rec {
+    border-bottom: 2px solid #45A29E;
+}
+
+.hobbies {
+    /* background: #1F2833; */
+    border-bottom: 2px solid #1F2833;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 2%;
+    padding-left: 3%;
+    border-radius: 3px;
+}
+
+#right-side-container {
+    /* background: #1F2833; */
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 1%;
+    height: 100%;
+    width: 100%;
+}
+
+#right-side-container p {
+    background-color: inherit;
+    border-radius: 3px;
+}
+
+#right-side-user {
+    background-color: inherit;
+}
+
+#right-side-container-inside {
+    background-color: inherit;
+}
+
+#trending-name {
+    padding: 2%;
+    background: inherit;
+}
+
+/* does not work */
+#trending-name p {
+    /* background-color: #1F2833; */
+    border-radius: 0;
+    /* padding-right: 100%; */
+}
+
+#tre {
+    margin-bottom: 10%;
+    border-bottom: 2px solid #45A29E;
+}
+
+.image-barrier {
+    /* background: #1F2833; */
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-top: 15px;
+    /* filter: blur(4px); */
+}
+
+.card-image {
+    border-radius: 3px 3px 0 0;
+}
+
+.card .card-image img {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.image-barrier div {
+    background: #1A252f;
+}
+
+.image-barrier p {
+    color: whitesmoke;
+}
+
+.main-user div {
+    float: right;
+    margin-top: 20%;
+}
+
+#user-pic {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+}
+
+#user-pic-nav {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+
+.posted-user div {
+    float: right;
+}
+
+.posted-user div img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+}
+
+/* .user-pic{
+      height: 80px;
+      width: 80px;
+      object-fit: cover; 
+  } */
+.input {
+    margin-top: 10%;
+    height: 10%;
+    border-radius: 3px;
+    background-color: #1A252f;
+}
+
+.card div {
+    background-color: #1A252f;
+}
+
+.card div span {
+    background-color: #1A252f;
+}
+
+.posted .card {
+    border-radius: 3px 3px 5px 5px;
+}
+
+.posted .card div img {
+    border-radius: 3px 3px 0 0;
+}
+
+.posted .card .card2 {
+    border-radius: 3px 3px 0 0;
+}
+
+.title {
+    border-radius: 0 0 3px 3px;
+}
+
+.title p {
+    border-radius: 0 0 3px 3px;
+}
+
+.activator {
+    border-radius: 0 0 3px 3px;
+}
+
+.card-reveal {
+    background: white;
+}
+
+.card-reveal p {
+    background: white;
+    padding-left: 4%;
+    padding-top: 2%;
+}
+
+.card-title {
+    background-color: white;
+    border-radius: 3px;
+    padding-left: 4%;
+}
+
+.title p {
+    background: #1A252f;
+    padding-top: 1%;
+    padding-right: 1.5%;
+}
+
+.posted {
+    margin-bottom: 30px;
+}
+
+.posted .username {
+    /* background-color: #1A252f; */
+    padding: 2%;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#date {
+    font-family: Cabin;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: whitesmoke;
+    margin-top: 2px;
+    margin-right: 2px;
+}
+
+.title span {
+    color: #45A29E;
+}

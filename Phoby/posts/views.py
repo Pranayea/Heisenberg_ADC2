@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import createPosts  # custom database
 from .forms import OurForm  # Custom Form
+from .models import *
 # Create your views here.
 
 # upload feature for posts app
 
 
 def posts(request):
+    posts = createPosts.objects.all()
+    context = {'posts': posts}
     form = OurForm()
     if request.method == "POST":
         # POSTing caption and images

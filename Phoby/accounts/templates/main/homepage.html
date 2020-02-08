@@ -22,7 +22,7 @@
 
 <head>
   <title>Homepage</title>
-  <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/main2.css' %}">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
@@ -70,7 +70,7 @@
             <p class="right"><a href="#">Download</a></p>
           </div>
           <div class="card-reveal">
-            <span class="card-title">Card Title</span>
+            <span class="card-title" id="title_card">Card Title</span>
             <p>
               {{post.post_caption}}
             </p>
@@ -82,14 +82,14 @@
     <div class="col s1"></div>
     <div class="col s3" id="right-side-stuff">
       <div>
-        <p style="padding-left: 2%;">Recommened hobbies</p>
+        <p style="padding-left: 2%;" id="rec">Recommened hobbies</p>
         <p class="hobbies">hobby1</p>
         <p class="hobbies">hobby2</p>
         <p class="hobbies">hobby3</p>
       </div>
       <br />
       <div id="right-side-container">
-        <p style="margin-top: 3%; padding-left:3%; margin-bottom:3%;">Trending</p>
+        <p style="margin-top: 3%; padding-left:3%; margin-bottom:3%;" id="tre">Trending</p>
         <div class="col s2" id="right-side-user">
           <img class="circle responsive-img" src="../images/ (7).jpg" />
         </div>
