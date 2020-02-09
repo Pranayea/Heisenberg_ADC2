@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import createPosts  # custom database
 from .forms import OurForm  # Custom Form
 from accounts.decorators import unauthenticated_user
+from django.contrib.auth.models import User  # Custom Form
 # Create your views here.
 
 # upload feature for posts app
