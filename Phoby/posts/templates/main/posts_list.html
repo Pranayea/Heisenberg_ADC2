@@ -3,6 +3,7 @@
 {% block content %}
 {% for post in Posts %}
 <div>
+    <p>Username: {{user.username}}</p>
     <!-- displaying from database  -->
     <img src="{{post.post_image.url}}" width=21% height=21%>
     <p>Caption: {{post.post_caption}}</p>
