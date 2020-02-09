@@ -13,7 +13,7 @@ def bio(request):
         if form.is_valid():
             form.instance.user_of = request.user
             form.save()
-            return redirect('userProfile:profile') 
+            return redirect('userProfile:profile')
         else:
             form = OurForm()
     return render(request, "userProfile/bio.html", {"form": form})
@@ -22,7 +22,9 @@ def bio(request):
 
 
 def profile_list(request):
-    return render(request, "userProfile/profile.html", context={"Profile": userProfile.objects.all})
+    current_user = request.user
+    profile = userProfile.objects.filter(user_of =current_user)
+    return render(request, "userProfile/profile.html", context={"Profile": profile})
 
 # update profile pic, bio etc
 

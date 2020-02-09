@@ -58,7 +58,8 @@
       {% for profile in profile %}
       <div class="col s4 posted-user">
         <div>
-          <img class="circle responsive-img" src="{{profile.profilePic.url}}" />
+          <p>User: {{ userProfile.user_of}}</p>
+          <img class="circle responsive-img" src="{{userProfile.user_of.profilePic.url}}" />
         </div>
       </div>
       {% endfor %}

@@ -31,7 +31,7 @@ def posts(request):
 @unauthenticated_user
 def posts_view(request):
     # takes and sends all the from databsse to html
-    return render(request, template_name="main/posts_list.html", context={"Posts": createPosts.objects.all})
+    return render(request, template_name="main/posts_list.html", context={"Posts": request.user.createPosts.objects.all})
 
 
 @unauthenticated_user
