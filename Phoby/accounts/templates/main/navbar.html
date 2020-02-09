@@ -28,9 +28,11 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
         {% for profile in profile %}
+        {% if user == profile.user_of %}
         <a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="{{profile.profilePic.url}}" alt=""
             id="user-pic-nav" class="circle responsive-img"><label id="uname">{{user.username}}</label></a>
-        {% endfor %}
+            {% endif %}
+            {% endfor %}
       </li>
     </ul>
   </div>

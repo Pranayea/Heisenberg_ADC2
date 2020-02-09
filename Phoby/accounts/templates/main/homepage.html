@@ -38,13 +38,16 @@
     <div class="col s1"></div>
     <div class="col s6">
       {% for profile in profile %}
+      {% if user == profile.user_of %}
       <div class="col s4 main-user">
-
+        <p>I am: {{user.username}}
+        </p> 
         <div>
           <img id="user-pic" class="circle responsive-img" src="{{profile.profilePic.url}}" />
         </div>
 
       </div>
+      {% endif %}
       {% endfor %}
       <div class="col s8">
         <div class="input">
@@ -56,12 +59,14 @@
       </div>
       {% for post in posts %}
       {% for profile in profile %}
+      {% if post.uploaded_by == profile.user_of %}
       <div class="col s4 posted-user">
         <div>
-          <p>User: {{ userProfile.user_of}}</p>
-          <img class="circle responsive-img" src="{{userProfile.user_of.profilePic.url}}" />
+          <p>User: {{ post.uploaded_by}}</p>
+          <img class="circle responsive-img" src="{{profile.profilePic.url}}" />
         </div>
       </div>
+      {% endif %}
       {% endfor %}
 
 
