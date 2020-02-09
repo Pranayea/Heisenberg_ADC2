@@ -11,10 +11,16 @@ from django.contrib.auth.models import User  # Custom Form
 def posts(request):
     form = OurForm()
     if request.method == "POST":
+        
+        # uploaded_by = request.user.username
         # POSTing caption and images
         form = OurForm(request.POST, request.FILES)
         if form.is_valid():
+<<<<<<< HEAD
             uploaded_by = request.User
+=======
+            form.instance.uploaded_by=request.user
+>>>>>>> c3e0b5f0cae27db958c7021207cb34e991db6bda
             form.save()
             # redirects when a set value is saved in the database
             return redirect('posts:view')
