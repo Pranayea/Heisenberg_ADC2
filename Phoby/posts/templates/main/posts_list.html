@@ -10,7 +10,7 @@
     <p>Caption: {{post.post_caption}}</p>
     <p>Posts: {{post.uploaded_on}}</p>
     <a href="{% url 'posts:update' post.pk %}">Edit</a>
-    <a href="{{post.post_image.url}}" download >  <i class="material-icons" style="margin-left:100px;">file_download</i></a>
+    <a href="{{post.post_image.url}}" download>  <i class="material-icons" style="margin-left:100px;">file_download</i></a>
     <form method="POST" action="{% url 'posts:delete' post.pk %}">
         {% csrf_token %}
         <button class="btn btn-primary btn-sm">Delete</button>
