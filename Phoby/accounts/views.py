@@ -115,3 +115,7 @@ def logout_page(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
     return redirect("accounts:login")
+
+
+
+
