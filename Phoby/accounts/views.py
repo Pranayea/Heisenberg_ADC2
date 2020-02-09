@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from posts.models import createPosts
+from userProfile.models import userProfile
 # this method shows all the hobby present
 
 
@@ -22,15 +23,9 @@ from posts.models import createPosts
 def homepage(request):
     users = User.objects.all()
     posts = createPosts.objects.all()
-    # caption = post_caption.objects.all()
-    # uploaded_on = uploaded_on.objects.all()
-    # total_customers = customers.count()
+    profile = userProfile.objects.all()
 
-    # total_orders = orders.count()
-    # delivered = orders.filter(status='Delivered').count()
-    # pending = orders.filter(status='Pending').count()
-
-    context = {'users': users, 'posts': posts}
+    context = {'users': users, 'posts': posts, 'profile': profile}
 
     return render(request, 'main/homepage.html', context)
 # this method registers user

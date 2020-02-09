@@ -12,6 +12,7 @@ class createPosts(models.Model):
         auto_now_add=True)  # adds value automatically
     uploaded_by = models.ForeignKey(
         User, default=1, on_delete=models.CASCADE, unique=False)
+    comment = models.ForeignKey(User, null=True,related_name='comment', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.post_caption

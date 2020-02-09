@@ -11,8 +11,9 @@ def bio(request):
     if request.method == "POST":
         form = OurForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.user_of = request.user
             form.save()
-            return redirect('userProfile:profile')
+            return redirect('userProfile:profile') 
         else:
             form = OurForm()
     return render(request, "userProfile/bio.html", {"form": form})
