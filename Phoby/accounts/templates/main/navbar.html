@@ -27,8 +27,10 @@
     <a href="#" class="brand-logo" style="padding-left:23px ;">Phoby</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
-        <a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="../images/ (1).jpg" alt=""
+        {% for profile in profile %}
+        <a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="{{profile.profilePic.url}}" alt=""
             id="user-pic-nav" class="circle responsive-img"><label id="uname">{{user.username}}</label></a>
+        {% endfor %}
       </li>
     </ul>
   </div>

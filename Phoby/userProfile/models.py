@@ -2,8 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # this class contains users profile picture and short bio
+
+
 class userProfile(models.Model):
-    user = models.OneToOneField(User,null=True, on_delete=models.CASCADE)
+    user_of = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     profilePic = models.ImageField(upload_to='profile/profilePic/',blank=False) 
     friends = models.ManyToManyField("userProfile", blank=True)
