@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import createPosts  # custom database
 from .forms import OurForm  # Custom Form
 from accounts.decorators import unauthenticated_user
-from djnago.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User  # Custom Form
 import json
 # Create your views here.
