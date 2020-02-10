@@ -1,32 +1,5 @@
-{% extends 'base.html' %}
-{% block content %}
-{% load static from static %}
-
-<html>
-
-<head>
-    <style>
-        .image {
-            margin-top: 20%;
-
-        }
-
-        .caption {
-            margin-top: 5%;
-        }
-    </style>
-</head>
-
-<body>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        {{form.hobby}}
-
-        <button class="btn btn-primary btn=sm" type="submit">Submit</button>
-    </form>
-
-</body>
-
-</html>
-{% endblock %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-primary btn=sm" type="submit"> Submit</button>
+</form>
