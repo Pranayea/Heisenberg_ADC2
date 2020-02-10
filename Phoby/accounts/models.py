@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from posts.models import createPosts
+from posts.models import CreatePosts
 
 
 class Users(models.Model):
@@ -23,6 +23,6 @@ class Hobby(models.Model):
     posts = models.IntegerField()
 
     def __str__(self):
-        return self.hobby_name
+        return self.hobbyName
 
 

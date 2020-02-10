@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
-from .models import createPosts  # custom database
-from .forms import OurForm  # Custom Form
+from .models import CreatePosts,Comments  # custom database
+from .forms import OurForm,CommentForm  # Custom Form
 from accounts.decorators import unauthenticated_user
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User  # Custom Form
@@ -29,17 +29,30 @@ def posts(request):
     # sends custom form to the html file
     return render(request, "main/upload.html", {"form": form})
 
+def postComment(request,id):
+    form =CommentForm()
+    posts = get_object_or_404(CreatePosts, id=id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.instance.comment_by = request.user
+            form.instance.post = posts
+            form.save()
+            return redirect('posts:comment')
+        else:
+            form = CommentForm()
+    return render (request,"main/comment.html",context={"form":form, "Posts":request.user.CreatePosts.objects.all})
 
 @unauthenticated_user
 def posts_view(request):
     # takes and sends all the from databsse to html
-    return render(request, template_name="main/posts_list.html", context={"Posts": request.user.createPosts.objects.all})
+    return render(request, template_name="main/posts_list.html", context={"Posts": request.user.CreatePosts.objects.all})
 
 
 @unauthenticated_user
 def update_posts(request, id=None):  # id of a specific post
     # takes the data from a specific post in the database
-    posts = get_object_or_404(createPosts, id=id)
+    posts = get_object_or_404(CreatePosts, id=id)
     form = OurForm()
     if request.method == "POST":
         # changes the value of chosen id
@@ -53,14 +66,14 @@ def update_posts(request, id=None):  # id of a specific post
 
 @unauthenticated_user
 def delete_posts(request, pk):  # primary key of specific post
-    posts = createPosts.objects.get(pk=pk)
+    posts = CreatePosts.objects.get(pk=pk)
     posts.delete()  # deletes the page
     return redirect('accounts:homepage')  # redirects to the list of post
 
 
 
 def show_all_data(request):
-    post = createPosts.objects.all()
+    post = CreatePosts.objects.all()
     print(type(post))
     dict_type = {"post": list(post.values("post_image","post_caption","uploaded_on"))}
     return JsonResponse(dict_type)
@@ -68,7 +81,7 @@ def show_all_data(request):
 
 @csrf_exempt
 def update_data_json(request, pk):
-    post= createPosts.objects.get(pk=pk)
+    post= CreatePosts.objects.get(pk=pk)
     if request.method == "GET":
         return JsonResponse({"post_image":post.post_image, "post_caption":post.post_caption,"uploaded_on":post.uploaded_on})
     else:
@@ -82,8 +95,8 @@ def update_data_json(request, pk):
 
 def post_objects_paginations(request,PAGENO,SIZE):
     skip = SIZE * (PAGENO -1)
-    post = createPosts.objects.all() [skip:(PAGENO * SIZE)]
+    post = CreatePosts.objects.all() [skip:(PAGENO * SIZE)]
     dict ={
-            "post":list(createPosts.values("post_image","post_caption","uploaded_on"))
+            "post":list(CreatePosts.values("post_image","post_caption","uploaded_on"))
         }
     return JsonResponse(dict)
