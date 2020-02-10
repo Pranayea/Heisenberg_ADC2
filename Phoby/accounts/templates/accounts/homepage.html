@@ -106,10 +106,10 @@
     <div class="col s1"></div>
     <div class="col s3" id="right-side-stuff">
       <div>
-        <p style="padding-left: 2%;">Recommened hobbies</p>
-        <p class="hobbies">hobby1</p>
-        <p class="hobbies">hobby2</p>
-        <p class="hobbies">hobby3</p>
+        <p style="padding-left: 2%;">Recommended hobbies</p>
+        {% for hobbys in hobby %}
+        <p class="hobbies">{{hobbys.hobbyName}}</p>
+        {% endfor %}
       </div>
       <br />
       <div id="right-side-container">

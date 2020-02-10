@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from accounts.models import Hobby
+from posts.models import Hobby
 # Create your models here.
 
 class PhobyUsers(models.Model):

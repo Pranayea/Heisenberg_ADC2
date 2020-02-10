@@ -3,7 +3,8 @@ from .models import PhobyUsers
 from django.contrib.auth.models import User
 from django.db.models import Q
 from posts.models import CreatePosts
-from accounts.models import Hobby
+from posts.models import Hobby
+
 
 # Create your views here.
 
@@ -24,8 +25,8 @@ def get_data_queryset(query=None):
     queries = query.split(" ")    
     for q in queries:
         users = User.objects.filter(
-            Q(username__icontains= q) | 
-            Q(email__icontains = q)
+            Q(username__icontains= q) 
+            
         ).distinct()
         hobbys = Hobby.objects.filter(
             Q(hobbyName__icontains= q) 

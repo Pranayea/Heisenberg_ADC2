@@ -16,13 +16,5 @@ class Users(models.Model):
 # Hobby table conatining hobby name and number of followers and posts
 
 
-class Hobby(models.Model):
-    hobby_id = models.AutoField(primary_key=True)
-    hobbyName = models.CharField(max_length=15)
-    # followers = models.ForeignKey()
-    posts = models.IntegerField()
-
-    def __str__(self):
-        return self.hobbyName
 
 

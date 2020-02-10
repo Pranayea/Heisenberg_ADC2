@@ -6,7 +6,7 @@ class OurForm(forms.ModelForm):
     # Meta Class Is used to override a class
     class Meta:
         model = CreatePosts
-        fields = ('post_image', 'post_caption', 'uploaded_by')
+        fields = ('post_image', 'post_caption', 'hobby',)
 
 
 class CommentForm(forms.ModelForm):

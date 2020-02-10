@@ -4,6 +4,11 @@ from datetime import datetime, date
 from django.contrib.auth.models import User  # for linking
 # Create your models here.
 
+class Hobby(models.Model):
+    hobbyName = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.hobbyName
 
 class CreatePosts(models.Model):
     post_image = models.ImageField(
@@ -13,6 +18,7 @@ class CreatePosts(models.Model):
         auto_now_add=True)  # adds value automatically
     uploaded_by = models.ForeignKey(
         User, default=1, on_delete=models.CASCADE, unique=False)
+    hobby = models.ForeignKey(Hobby, null=True, related_name='hobby', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.post_caption
