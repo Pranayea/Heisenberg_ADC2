@@ -40,35 +40,28 @@
       {% for profile in profile %}
 
       <div class="col s4 main-user">
-        <!-- <div>
-          {% if user == profile.user_of %}
-          <img id="user-pic" class="circle responsive-img" src="{{profile.profilePic.url}}" />
-          {% else %}
-          <img id="user-pic" class="circle responsive-img"
-            src="{% static '/profile/profilePic/default/default.png' %}" />
-          {% endif %}
-        </div> -->
+
 
       </div>
 
       {% endfor %}
+      {% for hobbys in hobby %}
       <div class="col s8">
         <div>
         </div>
         <div>
-          <h4 style="margin-top:20%;margin-bottom:5%;text-align:center;color:white;">Hobby Name</h4>
+          <h4 style="margin-top:20%;margin-bottom:5%;text-align:center;color:white;">{{hobbys.hobbyName}}</h4>
         </div>
       </div>
       {% for post in posts %}
+      {% if post.hobby_id == hobbys.id %}
       {% for profile in profile %}
 
       <div class="col s4 posted-user">
         <div>
           {% if post.uploaded_by == profile.user_of %}
           <img class="circle responsive-img" src="{{profile.profilePic.url}}" />
-          {% else %}
-          <img id="user-pic" class="circle responsive-img" src="{% static '/images/default/default.png' %}" />
-          {% endif %}
+{% endif %}
         </div>
       </div>
 
@@ -105,6 +98,8 @@
           </div>
         </div>
       </div>
+      {% endif %}
+      {% endfor %}
       {% endfor %}
     </div>
     <div class="col s1"></div>

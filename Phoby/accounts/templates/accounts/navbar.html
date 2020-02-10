@@ -32,10 +32,7 @@
         <a class="dropdown-trigger" href="#!" data-target="dropdown1">
           {% if user == profile.user_of %}
           <img src="{{profile.profilePic.url}}" alt="" id="user-pic-nav" class="circle responsive-img">
-          {% else %}
-          <img id="user-pic" class="circle responsive-img" src="{% static '/images/default/default.png' %}" />
-          <label id="uname">{{user.username}}</label></a>
-        {% endif %}
+{% endif %}
         {% endfor %}
       </li>
     </ul>
