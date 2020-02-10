@@ -1,4 +1,4 @@
-{% extends 'main/header.html' %}
+{% extends 'base.html' %}
 {% block content %}
 {% load static from static %}
 
@@ -100,7 +100,7 @@
             </p>
           </div>
         </div> -->
-        {% include "main/posts_list.html" %}
+        {% include "posts/posts_list.html" %}
       </div>
       {% endfor %}
     </div>
