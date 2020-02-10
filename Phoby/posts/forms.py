@@ -1,14 +1,9 @@
 from django import forms
-from .models import CreatePosts, Comments
+from .models import createPosts
 
 
 class OurForm(forms.ModelForm):
     # Meta Class Is used to override a class
     class Meta:
-        model = CreatePosts
+        model = createPosts
         fields = ('post_image','post_caption','uploaded_by')
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comments
-        fields=('comment',)
