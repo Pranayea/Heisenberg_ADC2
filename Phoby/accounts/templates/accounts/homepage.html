@@ -40,14 +40,7 @@
       {% for profile in profile %}
 
       <div class="col s4 main-user">
-        <!-- <div>
-          {% if user == profile.user_of %}
-          <img id="user-pic" class="circle responsive-img" src="{{profile.profilePic.url}}" />
-          {% else %}
-          <img id="user-pic" class="circle responsive-img"
-            src="{% static '/profile/profilePic/default/default.png' %}" />
-          {% endif %}
-        </div> -->
+
 
       </div>
 
@@ -68,9 +61,7 @@
         <div>
           {% if post.uploaded_by == profile.user_of %}
           <img class="circle responsive-img" src="{{profile.profilePic.url}}" />
-          {% else %}
-          <img id="user-pic" class="circle responsive-img" src="{% static '/images/default/default.png' %}" />
-          {% endif %}
+{% endif %}
         </div>
       </div>
 
