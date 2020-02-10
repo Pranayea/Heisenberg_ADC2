@@ -1,7 +1,33 @@
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.post_image}}
-    {{form.post_caption}}
-    {{form.post_uploaded_by}}
-    <button class="btn btn-primary btn=sm" type="submit">Submit</button>
-</form>
+{% extends 'base.html' %}
+{% block content %}
+{% load static from static %}
+
+<html>
+
+<head>
+    <style>
+        .image {
+            margin-top: 20%;
+
+        }
+
+        .caption {
+            margin-top: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <div class="image">{{form.post_image}}</div>
+            <div class="caption">{{form.post_caption}}</div>
+        </div>
+        <button class="btn btn-primary btn=sm" type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>
+{% endblock %}

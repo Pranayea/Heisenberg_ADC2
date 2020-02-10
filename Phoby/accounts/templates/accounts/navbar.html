@@ -1,3 +1,4 @@
+{% load static from static %}
 <!-- <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Phoby</a>
@@ -17,8 +18,7 @@
     </div>
   </nav> -->
 <ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">Profile</a></li>
-  <li><a href="#!">Saved</a></li>
+  <li><a href="/userProfile/profile/">Profile </a> </li> <!-- <li><a href="#!">Saved</a></li> -->
   <li class="divider"></li>
   <li><a href="/accounts/logout/">Logout</a></li>
 </ul>
@@ -28,11 +28,15 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
         {% for profile in profile %}
-        {% if user == profile.user_of %}
-        <a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="{{profile.profilePic.url}}" alt=""
-            id="user-pic-nav" class="circle responsive-img"><label id="uname">{{user.username}}</label></a>
-            {% endif %}
-            {% endfor %}
+
+        <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+          {% if user == profile.user_of %}
+          <img src="{{profile.profilePic.url}}" alt="" id="user-pic-nav" class="circle responsive-img">
+          {% else %}
+          <img id="user-pic" class="circle responsive-img" src="{% static '/images/default/default.png' %}" />
+          <label id="uname">{{user.username}}</label></a>
+        {% endif %}
+        {% endfor %}
       </li>
     </ul>
   </div>

@@ -221,3 +221,12 @@ span {
     margin-top: 15px;
     margin-bottom: 50px;
 }
+
+i.icon-blue {
+    color: black;
+    background-color: white;
+}
+
+#dropdown1 li a {
+    color: bisque;
+}
