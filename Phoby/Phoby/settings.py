@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'search',
     'userProfile',
+    'restapi',
 ]
 
 MIDDLEWARE = [
