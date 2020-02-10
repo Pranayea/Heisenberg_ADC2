@@ -16,6 +16,7 @@
 </div> -->
 
 <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
     <style>
         .bar {
@@ -121,7 +122,7 @@
                     {% if post.uploaded_by == profile.user_of %}
                     <p class="username" style="font-family: Taprom;">{{post.uploaded_by}} <span class="right"
                             id="date">{{post.uploaded_on}}</span></p>
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-image waves-effect waves-block waves-light card2">
                             <img class="activator" src="{{post.post_image.url}}" />
                         </div>
@@ -140,6 +141,31 @@
                             </form>
                             <p>
                                 {{post.post_caption}}
+                            </p>
+                        </div>
+                    </div> -->
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{post.post_image.url}}">
+                        </div>
+                        <div class="card-content" style="background-color: white;">
+                            <span class="card-title activator grey-text text-darken-4"
+                                style="background-color: white;">{{post.post_caption}}<i class=" material-icons
+                            right" style="background-color: white;">more_vert</i></span>
+                            <p style="background-color: white;"><a href="{% url 'posts:update' post.pk %}">Edit</a><a
+                                    href="{{post.post_image.url}}" download style="float: right;"> <i
+                                        class="material-icons icon-blue">file_download</i></a><span>
+                                    <form method="POST" action="{% url 'posts:delete' post.pk %}"
+                                        style="background-color: white;">
+                                        {% csrf_token %}
+                                        <button class="btn btn-primary btn-sm">Delete</button>
+                                    </form>
+                                </span><span style="float: right; background-color:white;">{{post.hobby}}</span></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4" style="background-color: white;">Comments<i
+                                    class="material-icons right" style="background-color: white;">close</i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.
                             </p>
                         </div>
                     </div>
