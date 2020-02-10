@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
-from .models import CreatePosts, Comments  # custom database
-from .forms import OurForm, CommentForm  # Custom Form
+from .models import CreatePosts,Comments  # custom database
+from .forms import OurForm,CommentForm  # Custom Form
 from accounts.decorators import unauthenticated_user
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User  # Custom Form
@@ -27,11 +27,10 @@ def posts(request):
         else:
             form = OurForm()
     # sends custom form to the html file
-    return render(request, "posts/upload.html", {"form": form})
+    return render(request, "main/upload.html", {"form": form})
 
-
-def postComment(request, id):
-    form = CommentForm()
+def postComment(request,id):
+    form =CommentForm()
     posts = get_object_or_404(CreatePosts, id=id)
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -42,8 +41,7 @@ def postComment(request, id):
             return redirect('posts:comment')
         else:
             form = CommentForm()
-    return render(request, "posts/comment.html", context={"form": form, "Posts": request.user.CreatePosts.objects.all})
-
+    return render (request,"main/comment.html",context={"form":form, "Posts":request.user.CreatePosts.objects.all})
 
 @unauthenticated_user
 def posts_view(request):
@@ -63,7 +61,7 @@ def update_posts(request, id=None):  # id of a specific post
             form.save()
             return redirect('posts:view')
     else:
-        return render(request, "posts/upload.html", {"form": form})
+        return render(request, "main/upload.html", {"form": form})
 
 
 @unauthenticated_user
@@ -83,7 +81,7 @@ def show_all_data(request):
 
 @csrf_exempt
 def update_data_json(request, pk):
-    post = CreatePosts.objects.get(pk=pk)
+    post= CreatePosts.objects.get(pk=pk)
     if request.method == "GET":
         return JsonResponse({"post_image": post.post_image, "post_caption": post.post_caption, "uploaded_on": post.uploaded_on})
     else:
@@ -93,13 +91,12 @@ def update_data_json(request, pk):
         post.post_caption = json_data['post_caption']
         post.uploaded_on = json_data['uploaded_on']
         post.save()
-        return JsonResponse({"message": "Successful!!"})
+        return JsonResponse({"message":"Successful!!"})
 
-
-def post_objects_paginations(request, PAGENO, SIZE):
-    skip = SIZE * (PAGENO - 1)
-    post = CreatePosts.objects.all()[skip:(PAGENO * SIZE)]
-    dict = {
-        "post": list(CreatePosts.values("post_image", "post_caption", "uploaded_on"))
-    }
+def post_objects_paginations(request,PAGENO,SIZE):
+    skip = SIZE * (PAGENO -1)
+    post = CreatePosts.objects.all() [skip:(PAGENO * SIZE)]
+    dict ={
+            "post":list(CreatePosts.values("post_image","post_caption","uploaded_on"))
+        }
     return JsonResponse(dict)
