@@ -1,7 +1,7 @@
 {% block content %}
 <!-- {% for post in Posts %} -->
-<!-- displaying from database 
-<p>Username: {{post.uploaded_by}}</p>
+<!-- displaying from database  -->
+<!-- <p>Username: {{post.uploaded_by}}</p>
 <img src="{{post.post_image.url}}" width=21% height=21%>
 <p>Caption: {{post.post_caption}}</p>
 <p>Posts: {{post.uploaded_on}}</p>
@@ -12,17 +12,19 @@
     <button class="btn btn-primary btn-sm">Delete</button>
 </form>
 {% endfor %} -->
+{% for post in Posts %}
 <p class="username" style="font-family: Taprom;">{{post.uploaded_by}} <span class="right"
         id="date">{{post.uploaded_on}}</span></p>
 <div class="card">
     <div class="card-image waves-effect waves-block waves-light card2">
         <img class="activator" src="{{post.post_image.url}}" />
     </div>
-    <div class="card-conten title">
+    <div class="card-content title">
         <span class="card-title activator">Card Title</span>
         <p class="right"> <a href="{% url 'posts:update' post.pk %}">Edit</a><span><a href="{{post.post_image.url}}"
                     download> <i class="material-icons"
-                        style="margin-left:100px;background-color:c4c4c4;">file_download</i></a></span></p>
+                        style="margin-left:100px;background-color:c4c4c4;">file_download</i></a></span>
+        </p>
     </div>
     <div class="card-reveal">
         <span class="card-title">Card Title</span>
@@ -35,4 +37,6 @@
         </p>
     </div>
 </div>
+{% endfor %}
+
 {% endblock content %}

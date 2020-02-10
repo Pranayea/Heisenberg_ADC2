@@ -1,9 +1,7 @@
-{% extends 'base.html' %}
-{% block content %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-   <p>Username: {{user.username}} </p> 
-    {{form}}
+    {{form.post_image}}
+    {{form.post_caption}}
+    {{form.post_uploaded_by}}
     <button class="btn btn-primary btn=sm" type="submit">Submit</button>
 </form>
-{% endblock content %}

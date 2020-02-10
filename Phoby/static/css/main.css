@@ -143,7 +143,7 @@ span {
 }
 
 .card div {
-    background-color: #c4c4c4;
+    background-color: white;
 }
 
 .card div span {
@@ -200,7 +200,7 @@ span {
     background-color: #c4c4c4;
     padding: 2%;
     border-radius: 20px;
-    margin-bottom: 2%;
+    margin-bottom: 10%;
 }
 
 #date {
@@ -211,4 +211,13 @@ span {
     color: #5f5d5d;
     margin-top: 2px;
     margin-right: 2px;
+}
+
+.caption p {
+    background-color: inherit;
+}
+
+.row .col.s8 {
+    margin-top: 15px;
+    margin-bottom: 50px;
 }

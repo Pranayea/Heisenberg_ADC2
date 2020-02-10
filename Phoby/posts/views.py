@@ -11,7 +11,6 @@ import json
 # upload feature for posts app
 
 
-@unauthenticated_user
 def posts(request):
     form = OurForm()
     if request.method == "POST":
@@ -23,7 +22,7 @@ def posts(request):
             form.instance.uploaded_by = request.user
             form.save()
             # redirects when a set value is saved in the database
-            return redirect('posts:view')
+            return redirect('userProfile:profile')
         else:
             form = OurForm()
     # sends custom form to the html file
@@ -42,16 +41,14 @@ def postComment(request, id):
             return redirect('posts:comment')
         else:
             form = CommentForm()
-    return render(request, "posts/comment.html", context={"form": form, "Posts": request.user.CreatePosts.objects.all})
+    return render(request, "posts/comment.html", context={"form": form, "Posts": CreatePosts.objects.all})
 
 
-@unauthenticated_user
 def posts_view(request):
     # takes and sends all the from databsse to html
-    return render(request, template_name="posts/posts_list.html", context={"Posts": request.user.CreatePosts.objects.all})
+    return render(request, template_name="posts/posts_list.html", context={"Posts": CreatePosts.objects.all})
 
 
-@unauthenticated_user
 def update_posts(request, id=None):  # id of a specific post
     # takes the data from a specific post in the database
     posts = get_object_or_404(CreatePosts, id=id)
@@ -61,16 +58,15 @@ def update_posts(request, id=None):  # id of a specific post
         form = OurForm(request.POST, request.FILES, instance=posts)
         if form.is_valid():
             form.save()
-            return redirect('posts:view')
+            return redirect('userProfile:profile')
     else:
         return render(request, "posts/upload.html", {"form": form})
 
 
-@unauthenticated_user
 def delete_posts(request, pk):  # primary key of specific post
     posts = CreatePosts.objects.get(pk=pk)
     posts.delete()  # deletes the page
-    return redirect('posts:view')  # redirects to the list of post
+    return redirect('userProfile:profile')  # redirects to the list of post
 
 
 def show_all_data(request):

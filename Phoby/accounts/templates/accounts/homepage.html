@@ -53,11 +53,11 @@
 
       {% endfor %}
       <div class="col s8">
-        <div class="input">
-          <input type="text">
+        <div>
+          {% include "posts/upload.html" %}
         </div>
         <div>
-          <h4 style="margin-top:13%;margin-bottom:13%;text-align:center;color:white;">Hobby Name</h4>
+          <h4 style="margin-top:20%;margin-bottom:5%;text-align:center;color:white;">Hobby Name</h4>
         </div>
       </div>
       {% for post in posts %}
@@ -77,30 +77,31 @@
 
 
       <div class="col s8 posted">
-        <!-- <p class="username" style="font-family: Taprom;">{{post.uploaded_by}} <span class="right"
+        <p class="username" style="font-family: Taprom;">{{post.uploaded_by}} <span class="right"
             id="date">{{post.uploaded_on}}</span></p>
-        <div class="card">
+        <!-- <div class="card">
           <div class="card-image waves-effect waves-block waves-light card2">
             <img class="activator" src="{{post.post_image.url}}" />
           </div>
           <div class="card-conten title">
-            <span class="card-title activator">Card Title</span>
-            <p class="right"> <a href="{% url 'posts:update' post.pk %}">Edit</a><span><a href="{{post.post_image.url}}"
-                  download> <i class="material-icons"
+            <span class="card-title activator">{{post.post_caption}}</span>
+            <p class="right"><span><a href="{{post.post_image.url}}" download> <i class="material-icons"
                     style="margin-left:100px;background-color:c4c4c4;">file_download</i></a></span></p>
           </div>
-          <div class="card-reveal">
-            <span class="card-title">Card Title</span>
-            <form method="POST" action="{% url 'posts:delete' post.pk %}">
-              {% csrf_token %}
-              <button class="btn btn-primary btn-sm">Delete</button>
-            </form>
-            <p>
-              {{post.post_caption}}
-            </p>
-          </div>
         </div> -->
-        {% include "posts/posts_list.html" %}
+        <div class="card">
+          <div class="card-image">
+            <img src="{{post.post_image.url}}">
+            <!-- <span class="card-title">Card Title</span> -->
+          </div>
+          <div class="card-content caption">
+            <p>{{post.post_caption}}</p>
+          </div>
+          <div class="card-action download">
+            <a href="{{post.post_image.url}}" download> <i class="material-icons"
+                style="background-color: white;">file_download</i></a>
+          </div>
+        </div>
       </div>
       {% endfor %}
     </div>

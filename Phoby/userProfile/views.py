@@ -4,8 +4,11 @@ from .models import UserProfile
 from .form import OurForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from posts.models import *
 
 # add bio and profile pic
+
+
 def bio(request):
     form = OurForm()
     if request.method == "POST":
@@ -23,8 +26,9 @@ def bio(request):
 
 def profile_list(request):
     current_user = request.user
-    profile = UserProfile.objects.filter(user_of =current_user)
-    return render(request, "userProfile/profile.html", context={"Profile": profile})
+    post = CreatePosts.objects.all()
+    profile = UserProfile.objects.filter(user_of=current_user)
+    return render(request, "userProfile/profile.html", context={"Profile": profile, "post": post})
 
 # update profile pic, bio etc
 
@@ -41,18 +45,20 @@ def update_profile(request, id=None):
         return render(request, "userProfile/bio.html", {"form": form})
 
 
-def send_follow(request,id):
+def send_follow(request, id):
     if request.user.is_authenticated():
-        user =get_object_or_404(User,id=id)
-        fo_request= Followers.objects.get_or_create(
-            from_user = request.user, 
-            to_user = user
+        user = get_object_or_404(User, id=id)
+        fo_request = Followers.objects.get_or_create(
+            from_user=request.user,
+            to_user=user
         )
-    return redirect("accounts:homepage") 
+    return redirect("accounts:homepage")
 
-def accept_follow(request,id):
-    from_user = get_object_or_404(User,id=id)
-    fo_request=Followers.objects.filter(from_user=from_user, to_user=request.user).first()
+
+def accept_follow(request, id):
+    from_user = get_object_or_404(User, id=id)
+    fo_request = Followers.objects.filter(
+        from_user=from_user, to_user=request.user).first()
     user1 = fo_request.to_user
     user2 = from_user
     user1.userProfile.friends.add(user2.userProfile)
