@@ -34,7 +34,7 @@ def profile_list(request):
 
 
 def update_profile(request, id=None):
-    profile = get_object_or_404(userProfile, id=id)
+    profile = get_object_or_404(UserProfile, id=id)
     form = OurForm()
     if request.method == "POST":
         form = OurForm(request.POST, request.FILES, instance=profile)
