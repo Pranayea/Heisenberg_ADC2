@@ -89,11 +89,11 @@
             <span class="card-title grey-text text-darken-4" style="background-color: white;">Comments<i
                 class="material-icons right" style="background-color: white;">close</i></span>
             {% for comment in comments%}
-            {% for post in posts %}
+         
             {% if comment.post_id == post.id %}
             <p>{{comment.user}}:{{comment.comment}}</p>
             {% endif %}
-            {% endfor %}
+          
             {% endfor %}
           </div>
         </div>
