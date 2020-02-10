@@ -22,12 +22,12 @@ from userProfile.models import UserProfile
 # @admin_only
 def homepage(request):
     users = User.objects.all()
-    posts = createPosts.objects.all()
+    posts = CreatePosts.objects.all()
     profile = UserProfile.objects.all()
 
     context = {'users': users, 'posts': posts, 'profile': profile}
 
-    return render(request, 'main/homepage.html', context)
+    return render(request, 'accounts/homepage.html', context)
 # this method registers user
 
 
@@ -53,7 +53,7 @@ def register(request):
             return redirect('accounts:login')
 
     context = {'form': form}
-    return render(request, 'main/register.html', context)
+    return render(request, 'accounts/register.html', context)
 
 # this method authenticates user to login
 
@@ -101,7 +101,7 @@ def loginpage(request):
             messages.info(request, 'Username OR password is incorrect')
 
     context = {}
-    return render(request, 'main/login.html', context)
+    return render(request, 'accounts/login.html', context)
 
 # this method logouts the user
 
@@ -110,7 +110,3 @@ def logout_page(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
     return redirect("accounts:login")
-
-
-
-
