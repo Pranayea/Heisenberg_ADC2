@@ -7,11 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User  # Custom Form
 from django.http import HttpResponseRedirect
 import json
-# Create your views here.
+
 
 # upload feature for posts app
-
-
 def posts(request):
     form = OurForm()
     if request.method == "POST":
@@ -29,17 +27,16 @@ def posts(request):
     # sends custom form to the html file
     return render(request, "posts/upload.html", {"form": form})
 
-
+# this method is for posting comments
 def postComment(request, pk):
     form = CommentForm()
-    # post = get_object_or_404(createPosts,id =pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
-            form.instance.user = request.user
-            form.instance.post = get_object_or_404(CreatePosts, id=pk)
+            form.instance.user = request.user #takes instance of user
+            form.instance.post = get_object_or_404(CreatePosts, id=pk) #takes instance of posts
             form.save()
-            return HttpResponseRedirect("")
+            return HttpResponseRedirect("") 
         else:
             form = CommentForm()
 
@@ -59,8 +56,8 @@ def update_posts(request, id=None):  # id of a specific post
         # changes the value of chosen id
         form = OurForm(request.POST, request.FILES, instance=posts)
         if form.is_valid():
-            form.save()
-            return redirect('userProfile:profile')
+            form.save() #saves form
+            return redirect('userProfile:profile') #redirects to method profile
     else:
         return render(request, "posts/upload.html", {"form": form})
 
@@ -70,34 +67,3 @@ def delete_posts(request, pk):  # primary key of specific post
     posts.delete()  # deletes the page
     return redirect('userProfile:profile')  # redirects to the list of post
 
-
-def show_all_data(request):
-    post = CreatePosts.objects.all()
-    print(type(post))
-    dict_type = {"post": list(post.values(
-        "post_image", "post_caption", "uploaded_on"))}
-    return JsonResponse(dict_type)
-
-
-@csrf_exempt
-def update_data_json(request, pk):
-    post = CreatePosts.objects.get(pk=pk)
-    if request.method == "GET":
-        return JsonResponse({"post_image": post.post_image, "post_caption": post.post_caption, "uploaded_on": post.uploaded_on})
-    else:
-        json_body = request.body.decode('utf-8')
-        json_data = json.loads(json_body)
-        post.post_image = json_data['post_image']
-        post.post_caption = json_data['post_caption']
-        post.uploaded_on = json_data['uploaded_on']
-        post.save()
-        return JsonResponse({"message": "Successful!!"})
-
-
-def post_objects_paginations(request, PAGENO, SIZE):
-    skip = SIZE * (PAGENO - 1)
-    post = CreatePosts.objects.all()[skip:(PAGENO * SIZE)]
-    dict = {
-        "post": list(CreatePosts.values("post_image", "post_caption", "uploaded_on"))
-    }
-    return JsonResponse(dict)

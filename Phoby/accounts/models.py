@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from posts.models import CreatePosts
+
 
 
 class Users(models.Model):
@@ -13,7 +13,7 @@ class Users(models.Model):
     def __str__(self):
         return self.name
 
-# Hobby table conatining hobby name and number of followers and posts
+
 
 
 
