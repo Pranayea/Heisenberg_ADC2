@@ -79,26 +79,34 @@
         <p class="username" style="font-family: Taprom;">{{post.uploaded_by}} <span class="right"
             id="date">{{post.uploaded_on}}</span></p>
         <!-- <div class="card">
-          <div class="card-image waves-effect waves-block waves-light card2">
-            <img class="activator" src="{{post.post_image.url}}" />
-          </div>
-          <div class="card-conten title">
-            <span class="card-title activator">{{post.post_caption}}</span>
-            <p class="right"><span><a href="{{post.post_image.url}}" download> <i class="material-icons"
-                    style="margin-left:100px;background-color:c4c4c4;">file_download</i></a></span></p>
-          </div>
-        </div> -->
-        <div class="card">
           <div class="card-image">
-            <img src="{{post.post_image.url}}">
-            <!-- <span class="card-title">Card Title</span> -->
-          </div>
+            <img src="{{post.post_image.url}}"> -->
+        <!-- <span class="card-title">Card Title</span> -->
+        <!-- </div>
           <div class="card-content caption">
             <p>{{post.post_caption}}</p>
           </div>
           <div class="card-action download">
             <a href="{{post.post_image.url}}" download> <i class="material-icons icon-blue">file_download</i></a>
             {{post.hobby}}
+          </div>
+        </div> -->
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{post.post_image.url}}">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"
+              style="background-color: white;">{{post.post_caption}}<i class=" material-icons
+              right" style="background-color: white;">more_vert</i></span>
+            <p style="background-color: white;"><a href="{{post.post_image.url}}" download> <i
+                  class="material-icons icon-blue">file_download</i></a><span
+                style="float: right; background-color:white;">{{post.hobby}}</span></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4" style="background-color: white;">Comments<i
+                class="material-icons right" style="background-color: white;">close</i></span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
           </div>
         </div>
       </div>
