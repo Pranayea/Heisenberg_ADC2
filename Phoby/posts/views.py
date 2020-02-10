@@ -29,19 +29,20 @@ def posts(request):
     return render(request, "posts/upload.html", {"form": form})
 
 
-def postComment(request, id):
+def postComment(request, pk):
     form = CommentForm()
-    posts = get_object_or_404(CreatePosts, id=id)
+    # post = get_object_or_404(createPosts,id =pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
-            form.instance.comment_by = request.user
-            form.instance.post = posts
+            form.instance.user = request.user
+            form.instance.post = get_object_or_404(CreatePosts, id=pk)
             form.save()
-            return redirect('posts:comment')
+            return redirect('posts:view')
         else:
             form = CommentForm()
-    return render(request, "posts/comment.html", context={"form": form, "Posts": CreatePosts.objects.all})
+
+    return render(request, "posts/comments.html", {"form": form, "posts": CreatePosts.objects.all, "Comments": Comments.objects.all})
 
 
 def posts_view(request):
