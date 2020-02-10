@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div>
-        {% for profile in Profile %}
-        Profile pic: <img src="{{profile.profilePic.url}}" alt="profile_pic" class="circle responsive-img"> <br>
-        <!-- Username: {{user.user}} <br> -->
-        Bio : {{profile.bio}}
-        <a href="{% url 'userProfile:update' profile.pk %}">Edit</a>
-        {% endfor %}
-    </div>
-    <br>
+{% load static from static %}
+<div>
+    {% for profile in Profile %}
+    Profile pic:
+    {% if user == profile.user_of %}
+    <img id="user-pic" class="circle responsive-img" src="{{profile.profilePic.url}}" />
+    {% else %}
+    <img id="user-pic" class="circle responsive-img" src="{% static '/profile/profilePic/default/default.png' %}" />
+    {% endif %}
+    <!-- Username: {{user.user}} <br> -->
+    Bio : {{profile.bio}}
+    <a href="{% url 'userProfile:update' profile.pk %}">Edit</a>
+    {% endfor %}
+</div>
+<br>
 
 {% endblock content %}

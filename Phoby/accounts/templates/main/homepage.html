@@ -38,16 +38,19 @@
     <div class="col s1"></div>
     <div class="col s6">
       {% for profile in profile %}
-      {% if user == profile.user_of %}
+
       <div class="col s4 main-user">
-        <p>I am: {{user.username}}
-        </p> 
         <div>
+          {% if user == profile.user_of %}
           <img id="user-pic" class="circle responsive-img" src="{{profile.profilePic.url}}" />
+          {% else %}
+          <img id="user-pic" class="circle responsive-img"
+            src="{% static '/profile/profilePic/default/default.png' %}" />
+          {% endif %}
         </div>
 
       </div>
-      {% endif %}
+
       {% endfor %}
       <div class="col s8">
         <div class="input">
@@ -59,19 +62,22 @@
       </div>
       {% for post in posts %}
       {% for profile in profile %}
-      {% if post.uploaded_by == profile.user_of %}
+
       <div class="col s4 posted-user">
         <div>
-          <p>User: {{ post.uploaded_by}}</p>
+          {% if post.uploaded_by == profile.user_of %}
           <img class="circle responsive-img" src="{{profile.profilePic.url}}" />
+          {% else %}
+          <img id="user-pic" class="circle responsive-img" src="{% static '/images/default/default.png' %}" />
+          {% endif %}
         </div>
       </div>
-      {% endif %}
+
       {% endfor %}
 
 
       <div class="col s8 posted">
-        <p class="username" style="font-family: Taprom;">{{post.uploaded_by}} <span class="right"
+        <!-- <p class="username" style="font-family: Taprom;">{{post.uploaded_by}} <span class="right"
             id="date">{{post.uploaded_on}}</span></p>
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light card2">
@@ -93,7 +99,8 @@
               {{post.post_caption}}
             </p>
           </div>
-        </div>
+        </div> -->
+        {% include "main/posts_list.html" %}
       </div>
       {% endfor %}
     </div>

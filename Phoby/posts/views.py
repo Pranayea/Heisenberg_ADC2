@@ -55,22 +55,22 @@ def update_posts(request, id=None):  # id of a specific post
 def delete_posts(request, pk):  # primary key of specific post
     posts = createPosts.objects.get(pk=pk)
     posts.delete()  # deletes the page
-    return redirect('accounts:homepage')  # redirects to the list of post
-
+    return redirect('posts:view')  # redirects to the list of post
 
 
 def show_all_data(request):
     post = createPosts.objects.all()
     print(type(post))
-    dict_type = {"post": list(post.values("post_image","post_caption","uploaded_on"))}
+    dict_type = {"post": list(post.values(
+        "post_image", "post_caption", "uploaded_on"))}
     return JsonResponse(dict_type)
 
 
 @csrf_exempt
 def update_data_json(request, pk):
-    post= createPosts.objects.get(pk=pk)
+    post = createPosts.objects.get(pk=pk)
     if request.method == "GET":
-        return JsonResponse({"post_image":post.post_image, "post_caption":post.post_caption,"uploaded_on":post.uploaded_on})
+        return JsonResponse({"post_image": post.post_image, "post_caption": post.post_caption, "uploaded_on": post.uploaded_on})
     else:
         json_body = request.body.decode('utf-8')
         json_data = json.loads(json_body)
@@ -78,12 +78,13 @@ def update_data_json(request, pk):
         post.post_caption = json_data['post_caption']
         post.uploaded_on = json_data['uploaded_on']
         post.save()
-        return JsonResponse({"message":"Successful!!"})
+        return JsonResponse({"message": "Successful!!"})
 
-def post_objects_paginations(request,PAGENO,SIZE):
-    skip = SIZE * (PAGENO -1)
-    post = createPosts.objects.all() [skip:(PAGENO * SIZE)]
-    dict ={
-            "post":list(createPosts.values("post_image","post_caption","uploaded_on"))
-        }
+
+def post_objects_paginations(request, PAGENO, SIZE):
+    skip = SIZE * (PAGENO - 1)
+    post = createPosts.objects.all()[skip:(PAGENO * SIZE)]
+    dict = {
+        "post": list(createPosts.values("post_image", "post_caption", "uploaded_on"))
+    }
     return JsonResponse(dict)
