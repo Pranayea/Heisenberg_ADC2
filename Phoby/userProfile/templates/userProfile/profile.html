@@ -98,10 +98,7 @@
                 {% for profile in Profile %}
                 {% if user == profile.user_of %}
                 <img class="user-pic" class="circle responsive-img" src="{{profile.profilePic.url}}" />
-                {% else %}
-                <img id="user-pic" class="circle responsive-img"
-                    src="{% static '/profile/profilePic/default/default.png' %}" />
-                {% endif %}
+   {% endif %}
             </div>
         </div>
         <div class="space">

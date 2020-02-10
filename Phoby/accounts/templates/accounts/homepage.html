@@ -52,14 +52,16 @@
       </div>
 
       {% endfor %}
+      {% for hobbys in hobby %}
       <div class="col s8">
         <div>
         </div>
         <div>
-          <h4 style="margin-top:20%;margin-bottom:5%;text-align:center;color:white;">Hobby Name</h4>
+          <h4 style="margin-top:20%;margin-bottom:5%;text-align:center;color:white;">{{hobbys.hobbyName}}</h4>
         </div>
       </div>
       {% for post in posts %}
+      {% if post.hobby_id == hobbys.id %}
       {% for profile in profile %}
 
       <div class="col s4 posted-user">
@@ -97,6 +99,8 @@
           </div>
         </div>
       </div>
+      {% endif %}
+      {% endfor %}
       {% endfor %}
     </div>
     <div class="col s1"></div>
