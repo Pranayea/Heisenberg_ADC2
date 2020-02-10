@@ -13,8 +13,8 @@ from .decorators import unauthenticated_user
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from posts.models import createPosts
-from userProfile.models import userProfile
+from posts.models import CreatePosts
+from userProfile.models import UserProfile
 # this method shows all the hobby present
 
 
@@ -22,13 +22,8 @@ from userProfile.models import userProfile
 # @admin_only
 def homepage(request):
     users = User.objects.all()
-<<<<<<< HEAD
     posts = CreatePosts.objects.all()
     profile = UserProfile.objects.all()
-=======
-    posts = createPosts.objects.all()
-    profile = userProfile.objects.all()
->>>>>>> 8024c672599c85329febd2cfe758ed5b087d2b7f
 
     context = {'users': users, 'posts': posts, 'profile': profile}
 

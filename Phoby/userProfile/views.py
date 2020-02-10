@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import userProfile
+from .models import UserProfile
 from .form import OurForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -23,7 +23,7 @@ def bio(request):
 
 def profile_list(request):
     current_user = request.user
-    profile = userProfile.objects.filter(user_of =current_user)
+    profile = UserProfile.objects.filter(user_of =current_user)
     return render(request, "userProfile/profile.html", context={"Profile": profile})
 
 # update profile pic, bio etc

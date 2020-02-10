@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import PhobyUsers
 from django.contrib.auth.models import User
 from django.db.models import Q
-from posts.models import createPosts
+from posts.models import CreatePosts
 from accounts.models import Hobby
 
 # Create your views here.
