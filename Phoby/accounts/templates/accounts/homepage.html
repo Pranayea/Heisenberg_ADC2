@@ -88,12 +88,20 @@
               right" style="background-color: white;">more_vert</i></span>
             <p style="background-color: white;"><a href="{{post.post_image.url}}" download> <i
                   class="material-icons icon-blue">file_download</i></a><span
+                style="background-color: white; padding-left:80px;"><a
+                  href="{% url 'posts:comment' post.pk %}">comment</a></span><span
                 style="float: right; background-color:white;">{{post.hobby}}</span></p>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4" style="background-color: white;">Comments<i
                 class="material-icons right" style="background-color: white;">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            {% for comment in comments%}
+            {% for post in posts %}
+            {% if comment.post_id == post.id %}
+            <p>{{comment.user}}:{{comment.comment}}</p>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
           </div>
         </div>
       </div>

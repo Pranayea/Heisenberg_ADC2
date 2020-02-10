@@ -98,7 +98,7 @@
                 {% for profile in Profile %}
                 {% if user == profile.user_of %}
                 <img class="user-pic" class="circle responsive-img" src="{{profile.profilePic.url}}" />
-                {% else %}
+                {% elif user != profile.user_of %}
                 <img id="user-pic" class="circle responsive-img"
                     src="{% static '/profile/profilePic/default/default.png' %}" />
                 {% endif %}

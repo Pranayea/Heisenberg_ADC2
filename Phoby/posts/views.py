@@ -5,6 +5,7 @@ from .forms import OurForm, CommentForm  # Custom Form
 from accounts.decorators import unauthenticated_user
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User  # Custom Form
+from django.http import HttpResponseRedirect
 import json
 # Create your views here.
 
@@ -38,7 +39,7 @@ def postComment(request, pk):
             form.instance.user = request.user
             form.instance.post = get_object_or_404(CreatePosts, id=pk)
             form.save()
-            return redirect('posts:view')
+            return HttpResponseRedirect("")
         else:
             form = CommentForm()
 

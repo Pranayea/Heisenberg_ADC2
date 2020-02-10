@@ -15,6 +15,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from posts.models import CreatePosts
 from posts.models import Hobby
+from posts.models import Comments
 from userProfile.models import UserProfile
 # this method shows all the hobby present
 
@@ -26,7 +27,8 @@ def homepage(request):
     posts = CreatePosts.objects.all()
     profile = UserProfile.objects.all()
     hobbys = Hobby.objects.all()
-    context = {'users': users, 'posts': posts, 'profile': profile, 'hobby':hobbys}
+    comments = Comments.objects.all()
+    context = {'users': users, 'posts': posts, 'profile': profile, 'hobby':hobbys,'comments':comments}
 
     return render(request, 'accounts/homepage.html', context)
 # this method registers user
