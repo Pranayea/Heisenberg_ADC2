@@ -19,10 +19,11 @@ from posts.models import Comments
 from userProfile.models import UserProfile
 # this method shows all the hobby present
 
-
+#login required to access
 @login_required(login_url='accounts:login')
 # @admin_only
 def homepage(request):
+    #creating objects
     users = User.objects.all()
     posts = CreatePosts.objects.all()
     profile = UserProfile.objects.all()
@@ -31,9 +32,9 @@ def homepage(request):
     context = {'users': users, 'posts': posts, 'profile': profile, 'hobby':hobbys,'comments':comments}
 
     return render(request, 'accounts/homepage.html', context)
+
+
 # this method registers user
-
-
 @unauthenticated_user
 def register(request):
     # form = PhobyForm()
@@ -49,9 +50,10 @@ def register(request):
         form = PhobyForm(request.POST)
         if form.is_valid():
             user = form.save()
+            #username is changed to lowercase
             username = form.cleaned_data.get('username')
 
-            messages.success(request, 'Account was created for ' + username)
+
 
             return redirect('accounts:login')
 
@@ -88,7 +90,7 @@ def register(request):
 #                   template_name="main/login.html",  # returns to login.html
 #                   context={"form": form})
 
-
+#this method is for login
 @unauthenticated_user
 def loginpage(request):
     if request.method == 'POST':
@@ -101,14 +103,13 @@ def loginpage(request):
             login(request, user)
             return redirect('accounts:homepage')
         else:
+            #gives message if username or password is incorrect
             messages.info(request, 'Username OR password is incorrect')
 
     context = {}
     return render(request, 'accounts/login.html', context)
 
 # this method logouts the user
-
-
 def logout_page(request):
     logout(request)
     messages.info(request, "Logged out successfully!")

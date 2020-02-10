@@ -6,7 +6,7 @@ from posts.models import CreatePosts
 from posts.models import Hobby
 
 
-# Create your views here.
+
 
 def userop(request):
     user = PhobyUsers.objects.all()
@@ -36,11 +36,5 @@ def get_data_queryset(query=None):
         for hobby in hobbys:
             queryset.append(hobby)
 
-    # for q in queries:          
-    #     hobbys = Hobby.objects.filter(
-    #         Q(hobbyName__icontains= q) 
-    #     ).distinct()
-    #     for hobby in hobbys:
-    #         queryset.append(hobby)
     return list(set(queryset))
     
